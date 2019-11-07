@@ -3,20 +3,24 @@
     <head>
         <title>Avengers App</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel='stylesheet' type='text/css' href='css/main.css' />
+        <link href="https://fonts.googleapis.com/css?family=Marvel&display=swap" rel="stylesheet"> 
     </head>
     <body>
         <h1>Welcome Nick Fury</h1>
         <h2>What would you like to do?</h2>
         
-        <form action="GetAvengers.do" method="GET">
-            <input type="submit" value="Display Avengers">
-        </form>
-        
-        <br>
-        
-        <form action="addAvenger.jsp" method="GET">
-            <input type="submit" value="Add Avenger">
-        </form>
+        <div class="buttons">
+            <form action="GetAvengers.do" method="GET">
+                <input type="submit" value="Display Avengers" class="btn">
+            </form>
+            
+            <br>
+            
+            <form action="addAvenger.jsp" method="GET">
+                <input type="submit" value="Add Avenger" class="btn">
+            </form>
+        </div>
         
     </body>
 </html>
