@@ -74,6 +74,9 @@ public class AvengerDb {
                     avengerList.add(tempAvenger);
                 }
             }
+            
+            //Close DB connection
+            DBConnector.closeJDBCObjects(conn, stmt, rs);
 
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
             System.out.println(ex);
