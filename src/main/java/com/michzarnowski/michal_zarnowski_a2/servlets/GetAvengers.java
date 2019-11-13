@@ -8,7 +8,6 @@ package com.michzarnowski.michal_zarnowski_a2.servlets;
 import com.michzarnowski.michal_zarnowski_a2.model.Avenger;
 import com.michzarnowski.michal_zarnowski_a2.model.AvengerDb;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
