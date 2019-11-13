@@ -63,9 +63,8 @@ public class AvengerDb {
                     int powerSourceInt = rs.getInt("powersource");
 
                     //Create power source object via PowerSourceDb
-                    PowerSourceDb powerSourceDb = new PowerSourceDb();
                     PowerSource tempPowerSource
-                            = powerSourceDb.getPowerSource(powerSourceInt);
+                            = PowerSourceDb.getPowerSource(powerSourceInt);
 
                     //create Avenger objects based on DB data
                     Avenger tempAvenger = new Avenger(id, name, description,
