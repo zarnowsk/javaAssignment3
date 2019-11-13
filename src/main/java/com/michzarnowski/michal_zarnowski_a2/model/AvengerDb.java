@@ -9,11 +9,11 @@ import java.util.ArrayList;
 
 public class AvengerDb {
 
-    public int addAvenger(Avenger avenger) {
+    public static int addAvenger(Avenger avenger) {
         return 0;
     }
 
-    public ArrayList<Avenger> getAvengers() {
+    public static ArrayList<Avenger> getAvengers() {
 
         //List of Avengers to be returned
         ArrayList<Avenger> avengerList = new ArrayList<>();
