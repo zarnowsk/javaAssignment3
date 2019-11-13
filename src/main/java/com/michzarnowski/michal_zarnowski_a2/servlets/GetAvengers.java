@@ -37,8 +37,7 @@ public class GetAvengers extends HttpServlet {
         /*Create ArrayList holding all Avenger records retrieved from the DB
           via AvengerDb class*/
         ArrayList<Avenger> avengerList;
-        AvengerDb avengerDb = new AvengerDb();
-        avengerList = avengerDb.getAvengers();
+        avengerList = AvengerDb.getAvengers();
         
         //Save ArrayList of Avengers as a request attribure
         request.setAttribute("avengers", avengerList);
