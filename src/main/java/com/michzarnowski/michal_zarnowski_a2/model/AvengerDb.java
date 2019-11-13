@@ -34,6 +34,7 @@ public class AvengerDb {
             // This enviroment variable is how we get the database info on Heroku
             // it is populated by Heroku with what we need to connect to the provisioned database
             // It will be null on our local machines or if no db add-on
+            // Info copyrights: PAUL BONENFANT
             String dbUrl = System.getenv("JDBC_DATABASE_URL");
 
             if (dbUrl != null && dbUrl.length() > 0) {
