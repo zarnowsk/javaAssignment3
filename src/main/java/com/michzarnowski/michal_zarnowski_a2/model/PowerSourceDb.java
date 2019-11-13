@@ -37,12 +37,12 @@ public class PowerSourceDb {
             
             //Acquire corresponding power source from DB
             //Power source query
-            String powerQuery = "SELECT * FROM powersource WHERE id = "
-                    + id;
+            String powerQuery = "SELECT * FROM powersource WHERE id = ?";
+            PreparedStatement ps = conn.prepareStatement(powerQuery);
+            ps.setInt(1, id); //set query param values
             
-            //Create and set the statement
-            Statement tempStmt = conn.createStatement();
-            ResultSet tempRs = tempStmt.executeQuery(powerQuery);
+            //Acquire results
+            ResultSet tempRs = ps.executeQuery();
             
             //Get result
             String powerDescription = "";
