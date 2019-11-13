@@ -52,7 +52,7 @@ public class AvengerDb {
                 String sqlQuery = "SELECT * FROM avengers";
                 PreparedStatement ps = conn.prepareStatement(sqlQuery);
 
-                //Create and set the statement
+                //Acquire results
                 rs = ps.executeQuery();
 
                 //Loop through results
