@@ -42,7 +42,7 @@ public class AvengerDb {
                 conn = DBConnector.getConnection(driver, dbUrl);
             } else {
                 //Load the driver
-                Class.forName(driver).newInstance();
+                Class.forName(driver);
 
                 //Database connection
                 conn = DBConnector.getConnection(driver, connUrl, database,
