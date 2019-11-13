@@ -2,6 +2,7 @@ package com.michzarnowski.michal_zarnowski_a2.model;
 
 import com.michzarnowski.michal_zarnowski_a2.db.DBConnector;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -49,10 +50,10 @@ public class AvengerDb {
 
                 //Declare a query
                 String sqlQuery = "SELECT * FROM avengers";
+                PreparedStatement ps = conn.prepareStatement(sqlQuery);
 
                 //Create and set the statement
-                stmt = conn.createStatement();
-                rs = stmt.executeQuery(sqlQuery);
+                rs = ps.executeQuery();
 
                 //Loop through results
                 while (rs.next()) {
