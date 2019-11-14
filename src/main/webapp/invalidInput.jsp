@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Invalid Avenger</title>
-        <link rel='stylesheet' type='text/css' href='css/main.css' />
+        <link rel='stylesheet' type='text/css' href='css/errorMain.css' />
         <link rel='stylesheet' type='text/css' href='css/button.css' />
         <link href="https://fonts.googleapis.com/css?family=Marvel&display=swap" rel="stylesheet"> 
     </head>
