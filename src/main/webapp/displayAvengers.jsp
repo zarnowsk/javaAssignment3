@@ -12,6 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Avenger Listing</title>
         <link rel='stylesheet' type='text/css' href='css/main.css' />
+        <link rel='stylesheet' type='text/css' href='css/button.css' />
         <link href="https://fonts.googleapis.com/css?family=Marvel&display=swap" rel="stylesheet"> 
     </head>
     <body>
@@ -25,6 +26,10 @@
             <p>Power Source: ${avenger.powerSource.description}</p>
         </c:forEach>
 
-        <a href="index.html">Back to index</a>
+        <a class="fill-button" href="index.html">
+            <span class="fill-button-hover">		
+                <span class="fill-button-text">Home</span>
+            </span>
+        </a>
     </body>
 </html>
