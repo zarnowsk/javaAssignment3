@@ -11,12 +11,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Invalid Avenger</title>
         <link rel='stylesheet' type='text/css' href='css/main.css' />
+        <link rel='stylesheet' type='text/css' href='css/button.css' />
         <link href="https://fonts.googleapis.com/css?family=Marvel&display=swap" rel="stylesheet"> 
     </head>
     <body>
         <h1>Oops! Something went wrong.</h1>
         <h2>Please try again with valid Avenger details.</h2>
         <br><br><br><br><br>
-        <a href="index.html">Back to index</a>
+        <a class="fill-button" href="index.html">
+            <span class="fill-button-hover">		
+                <span class="fill-button-text">Home</span>
+            </span>
+        </a>
     </body>
 </html>
