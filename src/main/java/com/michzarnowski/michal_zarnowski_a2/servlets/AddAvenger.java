@@ -39,36 +39,44 @@ public class AddAvenger extends HttpServlet {
         String name = request.getParameter("name");
         String description = request.getParameter("description");
         String powerSource = request.getParameter("powerSource");
-        
-        //Get new ID based on amount of records in Avnger DB already
-        int avengerId = AvengerDb.getAvengers().size() + 1;
-        
-        /*Find ID of powerSource by finding a match for description parameter
+
+        //Validate user input
+        if (name == null || name.length() == 0
+                || description == null || description.length() == 0) {
+            RequestDispatcher rd = request.getRequestDispatcher("invalidInput.jsp");
+            rd.forward(request, response);
+        } else {
+
+            //Get new ID based on amount of records in Avnger DB already
+            int avengerId = AvengerDb.getAvengers().size() + 1;
+
+            /*Find ID of powerSource by finding a match for description parameter
           inside ArrayList of power sources, start count at 1 to match DB*/
-        int psId = 0;
-        int count = 1;
-        ArrayList<PowerSource> powerSources = PowerSourceDb.getPowerSources();
-        for(PowerSource ps : powerSources){
-            if(ps.getDescription().equals(powerSource)) {
-                psId = count;
-                break;
+            int psId = 0;
+            int count = 1;
+            ArrayList<PowerSource> powerSources = PowerSourceDb.getPowerSources();
+            for (PowerSource ps : powerSources) {
+                if (ps.getDescription().equals(powerSource)) {
+                    psId = count;
+                    break;
+                }
+                count++;
             }
-            count++;
+
+            //Create new Avenger
+            PowerSource tempPowerSource = new PowerSource(psId, powerSource);
+            Avenger tempAvenger = new Avenger(avengerId, name, description, tempPowerSource);
+
+            //Add Avenger to DB via AvengerDb class
+            int addResult = AvengerDb.addAvenger(tempAvenger);
+
+            //Set query result as a request attribute
+            request.setAttribute("queryResult", addResult);
+
+            //Dispatch results JSP
+            RequestDispatcher rd = request.getRequestDispatcher("displayAddResult.jsp");
+            rd.forward(request, response);
         }
-        
-        //Create new Avenger
-        PowerSource tempPowerSource = new PowerSource(psId, powerSource);
-        Avenger tempAvenger = new Avenger(avengerId, name, description, tempPowerSource);
-        
-        //Add Avenger to DB via AvengerDb class
-        int addResult = AvengerDb.addAvenger(tempAvenger);
-        
-        //Set query result as a request attribute
-        request.setAttribute("queryResult", addResult);
-        
-        //Dispatch results JSP
-        RequestDispatcher rd = request.getRequestDispatcher("displayAddResult.jsp");
-        rd.forward(request, response);
     }
 
     /**
