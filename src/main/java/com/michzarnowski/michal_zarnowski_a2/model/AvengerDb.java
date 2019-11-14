@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AvengerDb {
-    
+
     //postgreSQL driver
     private static String driver = "org.postgresql.Driver";
     //connection URL
@@ -20,15 +20,65 @@ public class AvengerDb {
     private static String pass = "a1b2c3d3";
 
     public static int addAvenger(Avenger avenger) {
+
+        //Avenger details to be stored in the DB
+        int id = avenger.getId();
+        String name = avenger.getName();
+        String description = avenger.getDescription();
+        int powerSource = avenger.getPowerSource().getId();
+
+        //DB specific variables
+        Connection conn = null;
+        String table = "avengers";
+        int queryResult = 0;
+
+        try {
+            // This enviroment variable is how we get the database info on Heroku
+            // it is populated by Heroku with what we need to connect to the provisioned database
+            // It will be null on our local machines or if no db add-on
+            // Info copyrights: PAUL BONENFANT
+            String dbUrl = System.getenv("JDBC_DATABASE_URL");
+
+            if (dbUrl != null && dbUrl.length() > 0) {
+                conn = DBConnector.getConnection(driver, dbUrl);
+            } else {
+                //Load the driver
+                Class.forName(driver);
+
+                //Database connection
+                conn = DBConnector.getConnection(driver, connUrl, database,
+                        user, pass);
+
+                //Declare a query
+                String sqlQuery = "INSERT INTO " + table
+                        + "(id, avengername, description, powersource) VALUES (?, ?, ?, ?)";
+                PreparedStatement ps = conn.prepareStatement(sqlQuery);
+                ps.setInt(1, id);
+                ps.setString(2, name);
+                ps.setString(3, description);
+                ps.setInt(4, powerSource);
+
+                //Execute query
+                queryResult = ps.executeUpdate();
+            }
+
+            //Close DB connection
+            DBConnector.closeJDBCObjects(conn);
+
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+            System.out.println(ex);
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
         
-        return 0;
+        return queryResult;
     }
 
     public static ArrayList<Avenger> getAvengers() {
 
         //List of Avengers to be returned
         ArrayList<Avenger> avengerList = new ArrayList<>();
-        
+
         //DB specific variables
         Connection conn = null;
         ResultSet rs = null;
@@ -76,7 +126,7 @@ public class AvengerDb {
                     avengerList.add(tempAvenger);
                 }
             }
-            
+
             //Close DB connection
             DBConnector.closeJDBCObjects(conn, rs);
 
