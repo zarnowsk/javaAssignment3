@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="powerSourceHandler" uri="/WEB-INF/tlds/tag_library.tld" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,7 +19,7 @@
         <form action="AddAvenger.do" method="POST">
             Name: <input type="text" name="name"><br><br>
             Description: <input type="text" name="description"><br><br>
-            Power Source: <select></select><br><br>
+            Power Source: <powerSourceHandler:PowerSourceOptions /><br><br>
             <input type="submit" value="Submit">
         </form>
         
