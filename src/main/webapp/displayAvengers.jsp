@@ -17,6 +17,7 @@
     </head>
     <body>
         <h1>Here are the Avengers</h1>
+        <h3> - - - - - - - - - - - - - - - - - - - - - - - - - </h3>
 
         <!-- Display all avengers -->
         <%-- Loop through request attribute 'avengers'(ArrayList) to get
@@ -24,6 +25,7 @@
         <c:forEach var="avenger" items="${avengers}">
             <h2>${avenger.name}, ${avenger.description}</h2>
             <p>Power Source: ${avenger.powerSource.description}</p>
+            <hr>
         </c:forEach>
 
         <a class="fill-button" href="index.html">
