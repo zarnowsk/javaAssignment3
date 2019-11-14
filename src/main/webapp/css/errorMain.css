@@ -1,0 +1,60 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 6-Nov-2019, 9:01:40 PM
+    Author     : Michal Zarnowski
+*/
+
+body {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../media/error.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center; 
+  background-size: cover;
+  
+  font-family: 'Marvel', sans-serif;
+  font-size: 35px;
+  color: #dae7f7;
+  text-align: center;
+}
+
+.buttons {
+    margin-top: 4.5em;
+}
+
+.btn {
+    font-size: 20px;
+    position: relative;
+    background: none;
+    color: #dae7f7;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 0.2em solid #e6e6fa;
+    padding: 0.5em 1em;
+}
+
+.btn:hover {
+    background: #0f1626;
+    border: 0.2em solid #cc0c36;
+}
+
+.input-text , 
+.select-field{
+    color: white;
+    background-color: #0f1626;
+    width: 20%;
+    -moz-box-sizing: border-box;
+    border: 1px solid #C2C2C2;
+    -webkit-box-shadow: 1px 1px 4px #EBEBEB;
+    -webkit-border-radius: 3px;
+    padding: 7px;
+    outline: none;
+}
+.input-text :focus, 
+.select-field:focus{
+	border: 1px solid #0C0;
+}
+
