@@ -24,7 +24,7 @@ public class PowerSourceHandler extends SimpleTagSupport {
         String optionFormat = "<option value='%s'>%s</option>";
         
         try {
-            out.println("<select>");
+            out.println("<select name='powerSource'>");
 
             //Loop through list of power sources and print as options
             for(PowerSource source : powerSources){
