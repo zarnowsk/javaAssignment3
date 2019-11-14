@@ -4,8 +4,8 @@
   <short-name>tag_library</short-name>
   <uri>/WEB-INF/tlds/tag_library</uri>
   <tag>
-      <name>PowerSourceHandler</name>
-      <tag-class>com.michzarnows.michal_zarnowski_a2.taghandlers.PowerSourceHandler</tag-class>
+      <name>PowerSourceOptions</name>
+      <tag-class>com.michzarnowski.michal_zarnowski_a2.taghandlers.PowerSourceHandler</tag-class>
       <body-content>empty</body-content>
   </tag>
 
