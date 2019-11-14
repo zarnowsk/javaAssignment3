@@ -5,12 +5,22 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 public class AvengerDb {
+    
+    //postgreSQL driver
+    private static String driver = "org.postgresql.Driver";
+    //connection URL
+    private static String connUrl = "jdbc:postgresql://localhost/";
+    //database name
+    private static String database = "AvengerDb";
+    //database credentials
+    private static String user = "postgres";
+    private static String pass = "a1b2c3d3";
 
     public static int addAvenger(Avenger avenger) {
+        
         return 0;
     }
 
@@ -20,16 +30,8 @@ public class AvengerDb {
         ArrayList<Avenger> avengerList = new ArrayList<>();
         
         //DB specific variables
-        String connUrl = "jdbc:postgresql://localhost/";
         Connection conn = null;
-        Statement stmt = null;
         ResultSet rs = null;
-        String database = "AvengerDb";
-        String user = "postgres";
-        String pass = "a1b2c3d3";
-
-        //postgreSQL driver
-        String driver = "org.postgresql.Driver";
 
         try {
             // This enviroment variable is how we get the database info on Heroku
@@ -76,7 +78,7 @@ public class AvengerDb {
             }
             
             //Close DB connection
-            DBConnector.closeJDBCObjects(conn, stmt, rs);
+            DBConnector.closeJDBCObjects(conn, rs);
 
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
             System.out.println(ex);
