@@ -126,4 +126,9 @@ public class DBConnector {
         // simply call the overloaded implementation
         closeJDBCObjects(conn, stmt, null);
     }
+    
+    public static void closeJDBCObjects(Connection conn, ResultSet rs) {
+        // simply call the overloaded implementation
+        closeJDBCObjects(conn, null, rs);
+    }
 }
