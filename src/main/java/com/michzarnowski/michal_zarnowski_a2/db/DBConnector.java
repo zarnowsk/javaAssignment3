@@ -1,5 +1,4 @@
 
-
 package com.michzarnowski.michal_zarnowski_a2.db;
 
 import java.sql.Connection;
@@ -9,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- *
+ * Class used to acquire database connection or close database related instances.
  * @author Michal Zarnowski
  * @author Paul Bonenfant (code inspired by)
  */
@@ -18,7 +17,18 @@ public class DBConnector {
     // connection variable, constant throughout runtime
     private static Connection conn = null;
 
-    
+    /**
+     * Method used to acquire a connection with the database and return it to 
+     * calling method.
+     * @param driver Database driver to enable the application to interact with
+     * the database.
+     * @param url Database location.
+     * @param databaseName Specific database to be accessed.
+     * @param username Authorized user to interact with the database.
+     * @param password User's password used to log into the database.
+     * @return Connection to the database.
+     * @throws Exception 
+     */
     public static Connection getConnection(String driver, String url,
             String databaseName, String username, String password) throws Exception {
 
@@ -127,11 +137,22 @@ public class DBConnector {
         closeJDBCObjects(conn, stmt, null);
     }
     
+    /**
+     * Method to close Connection and ResultSet only. Use this method when a 
+     * Statement is not needed.
+     * @param conn connection to close
+     * @param rs  result set to close
+     */
     public static void closeJDBCObjects(Connection conn, ResultSet rs) {
         // simply call the overloaded implementation
         closeJDBCObjects(conn, null, rs);
     }
     
+    /**
+     * Method to close Connection only. Use this method when a ResultSet and
+     * Statement is not needed.
+     * @param conn connection to close
+     */
     public static void closeJDBCObjects(Connection conn) {
         // simply call the overloaded implementation
         closeJDBCObjects(conn, null, null);
