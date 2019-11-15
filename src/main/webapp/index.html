@@ -1,3 +1,11 @@
+<!-- 
+    Document   : index.html
+    Author     : Michal Zarnowski
+    Description: Home page of the application. This page allows the user to click
+                 on a button to add a new Avenger to the database or view all
+                 current Avenger records.
+-->
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,16 +15,20 @@
         <link href="https://fonts.googleapis.com/css?family=Marvel&display=swap" rel="stylesheet"> 
     </head>
     <body>
+        <!-- Page title -->
         <h1>Welcome Nick Fury</h1>
         <h2>What would you like to do?</h2>
         
         <div class="buttons">
+            
+            <!-- View avengers redirection form -->
             <form action="GetAvengers.do" method="GET">
                 <input type="submit" value="Display Avengers" class="btn">
             </form>
             
             <br>
             
+            <!-- Add avenger redirection form -->
             <form action="addAvenger.jsp" method="GET">
                 <input type="submit" value="Add Avenger" class="btn">
             </form>

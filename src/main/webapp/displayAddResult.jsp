@@ -2,6 +2,9 @@
     Document   : displayAddResult
     Created on : 14-Nov-2019, 12:42:09 PM
     Author     : Michal Zarnowski
+    Description: JSP page used to display the outcome of adding an Avenger to
+                 the database. Page uses JSTL to display correct outcome based
+                 on the 'queryResult' request attribute. 
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,6 +19,8 @@
         <link href="https://fonts.googleapis.com/css?family=Marvel&display=swap" rel="stylesheet"> 
     </head>
     <body>
+
+        <!-- JSTL selection statement displaying outcome of database update -->
         <c:choose>
             <c:when test="${queryResult == 1}">
                 <h1>Avenger added successfully!</h1>
@@ -28,6 +33,7 @@
             </c:otherwise>
         </c:choose>
 
+        <!-- Link to return to home page -->
         <a class="fill-button" href="index.html">
             <span class="fill-button-hover">		
                 <span class="fill-button-text">Home</span>
