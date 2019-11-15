@@ -7,6 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Java class to handle database manipulation referencing the 'avengers' table
+ * inside the 'AvengerDb'. This class is used to retrieve  an ArrayList of all 
+ * records inside the table or to add a new Avenger object to the database.
+ * @author Michal Zarnowski
+ * @author Paul Bonenfant (code segment used to check enviroment variable)
+ */
 public class AvengerDb {
 
     //postgreSQL driver
@@ -19,6 +26,11 @@ public class AvengerDb {
     private static String user = "postgres";
     private static String pass = "a1b2c3d3";
 
+    /**
+     * Method used to add a new Avenger object to the database.
+     * @param avenger Avenger object to be added
+     * @return number of rows added to the database
+     */
     public static int addAvenger(Avenger avenger) {
 
         //Avenger details to be stored in the DB
@@ -74,6 +86,11 @@ public class AvengerDb {
         return queryResult;
     }
 
+    /**
+     * Method used to retrieve all Avenger records in the database and 
+     * place them insed an ArrayList to return to calling method.
+     * @return ArrayList of Avenger objects to be returned
+     */
     public static ArrayList<Avenger> getAvengers() {
 
         //List of Avengers to be returned

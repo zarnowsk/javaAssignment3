@@ -1,16 +1,20 @@
 
-
 package com.michzarnowski.michal_zarnowski_a2.model;
 
 import java.io.Serializable;
 
-
+/**
+ * Java bean class modeling an Avenger object stored inside the database.
+ * @author Michal Zarnowski
+ */
 public class Avenger implements Serializable{
     
     private int id;
     private String name;
     private String description;
     private PowerSource powerSource;
+    
+    //Constructors
     
     public Avenger() {
         
@@ -22,6 +26,8 @@ public class Avenger implements Serializable{
         this.description = description;
         this.powerSource = powerSource;
     }
+    
+    //Getters and setters
     
     public int getId() {
         return id;

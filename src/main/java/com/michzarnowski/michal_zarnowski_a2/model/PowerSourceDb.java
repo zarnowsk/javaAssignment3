@@ -7,6 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Java class to handle database manipulation referencing the 'powersource' table
+ * inside the 'AvengerDb'. This class is used to retrieve a specific power
+ * source from the database or an ArrayList of all records inside the table.
+ * @author Michal Zarnowski
+ * @author Paul Bonenfant (code segment used to check enviroment variable)
+ */
 public class PowerSourceDb {
 
     //postgreSQL driver
@@ -19,8 +26,15 @@ public class PowerSourceDb {
     private static String user = "postgres";
     private static String pass = "a1b2c3d3";
 
+    /**
+     * Method used to retrieve a specific power source from the database by 
+     * supplying the id of the power source to retrieve.
+     * @param id identifier of the power source to retrieve
+     * @return required PowerSource object
+     */
     public static PowerSource getPowerSource(int id) {
 
+        //Initialize variables used by this method
         PowerSource powerSource = null;
         Connection conn = null;
         ResultSet tempRs = null;
@@ -71,6 +85,11 @@ public class PowerSourceDb {
         return powerSource;
     }
 
+    /**
+     * Method used to retrieve all PowerSource records in the database and 
+     * place them insed an ArrayList to return to calling method.
+     * @return ArrayList of PowerSource objects to be returned
+     */
     public static ArrayList<PowerSource> getPowerSources() {
 
         //List of PowerSources to be returned
