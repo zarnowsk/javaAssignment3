@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.michzarnowski.michal_zarnowski_a2.servlets;
 
 import com.michzarnowski.michal_zarnowski_a2.model.Avenger;
@@ -18,13 +14,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * HTTP Servlet used to process request when the user wants to add an Avenger 
+ * record to the database. 
  * @author Michal Zarnowski
  */
 public class AddAvenger extends HttpServlet {
 
     /**
      * Handles the HTTP <code>POST</code> method.
+     * Method retrieves required form parameters, validates the input to a 
+     * certain degree and calls another class to handle database INSERT action.
+     * Servlet then dispatches the JSP page used to display the result of the
+     * query.
      *
      * @param request servlet request
      * @param response servlet response
@@ -40,18 +41,19 @@ public class AddAvenger extends HttpServlet {
         String description = request.getParameter("description");
         String powerSource = request.getParameter("powerSource");
 
-        //Validate user input
+        /*Validate user input, check if name and description aren't null and
+          aren't of length zero*/
         if (name == null || name.length() == 0
                 || description == null || description.length() == 0) {
+            //If validation fails, dispatch error page
             RequestDispatcher rd = request.getRequestDispatcher("invalidInput.jsp");
             rd.forward(request, response);
         } else {
-
             //Get new ID based on amount of records in Avnger DB already
             int avengerId = AvengerDb.getAvengers().size() + 1;
 
             /*Find ID of powerSource by finding a match for description parameter
-          inside ArrayList of power sources, start count at 1 to match DB*/
+              inside ArrayList of power sources, start count at 1 to match DB*/
             int psId = 0;
             int count = 1;
             ArrayList<PowerSource> powerSources = PowerSourceDb.getPowerSources();
