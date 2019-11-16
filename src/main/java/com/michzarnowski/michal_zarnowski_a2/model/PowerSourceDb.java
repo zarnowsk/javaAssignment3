@@ -55,22 +55,22 @@ public class PowerSourceDb {
                 //Database connection
                 conn = DBConnector.getConnection(driver, connUrl, database,
                         user, pass);
+            }
 
-                //Acquire corresponding power source from DB
-                //Power source query
-                String powerQuery = "SELECT * FROM powersource WHERE id = ?";
-                PreparedStatement ps = conn.prepareStatement(powerQuery);
-                ps.setInt(1, id); //set query param values
-
-                //Acquire results
-                tempRs = ps.executeQuery();
-
-                //Get result
-                String powerDescription = "";
-                if (tempRs.next()) {
-                    powerDescription = tempRs.getString("description");
-                }
-
+            //Acquire corresponding power source from DB
+            //Power source query
+            String powerQuery = "SELECT * FROM powersource WHERE id = ?";
+            PreparedStatement ps = conn.prepareStatement(powerQuery);
+            ps.setInt(1, id); //set query param values
+            
+            //Acquire results
+            tempRs = ps.executeQuery();
+            
+            //Get result
+            String powerDescription = "";
+            if (tempRs.next()) {
+                powerDescription = tempRs.getString("description");
+                
                 powerSource = new PowerSource(id, powerDescription);
             }
             //close DB connection 
@@ -115,25 +115,25 @@ public class PowerSourceDb {
                 //Database connection
                 conn = DBConnector.getConnection(driver, connUrl, database,
                         user, pass);
+            }
 
-                //Declare a query
-                String sqlQuery = "SELECT * FROM powersource";
-                PreparedStatement ps = conn.prepareStatement(sqlQuery);
-
-                //Create and set the statement
-                rs = ps.executeQuery();
-
-                //Loop through results
-                while (rs.next()) {
-                    int id = rs.getInt("id");
-                    String desc = rs.getString("description");
-
-                    //Create power source object 
-                    PowerSource tempPowerSource = getPowerSource(id);
-
-                    //add to ArrayList
-                    powerSourcesList.add(tempPowerSource);
-                }
+            //Declare a query
+            String sqlQuery = "SELECT * FROM powersource";
+            PreparedStatement ps = conn.prepareStatement(sqlQuery);
+            
+            //Create and set the statement
+            rs = ps.executeQuery();
+            
+            //Loop through results
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String desc = rs.getString("description");
+                
+                //Create power source object 
+                PowerSource tempPowerSource = getPowerSource(id);
+                
+                //add to ArrayList
+                powerSourcesList.add(tempPowerSource);
             }
 
             //close DB connection 

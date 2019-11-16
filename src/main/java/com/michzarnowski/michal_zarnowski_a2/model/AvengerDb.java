@@ -60,19 +60,19 @@ public class AvengerDb {
                 //Database connection
                 conn = DBConnector.getConnection(driver, connUrl, database,
                         user, pass);
-
-                //Declare a query
-                String sqlQuery = "INSERT INTO " + table
-                        + "(id, avengername, description, powersource) VALUES (?, ?, ?, ?)";
-                PreparedStatement ps = conn.prepareStatement(sqlQuery);
-                ps.setInt(1, id);
-                ps.setString(2, name);
-                ps.setString(3, description);
-                ps.setInt(4, powerSource);
-
-                //Execute query
-                queryResult = ps.executeUpdate();
             }
+
+            //Declare a query
+            String sqlQuery = "INSERT INTO " + table
+                    + "(id, avengername, description, powersource) VALUES (?, ?, ?, ?)";
+            PreparedStatement ps = conn.prepareStatement(sqlQuery);
+            ps.setInt(1, id);
+            ps.setString(2, name);
+            ps.setString(3, description);
+            ps.setInt(4, powerSource);
+            
+            //Execute query
+            queryResult = ps.executeUpdate();
 
             //Close DB connection
             DBConnector.closeJDBCObjects(conn);
@@ -116,34 +116,34 @@ public class AvengerDb {
                 //Database connection
                 conn = DBConnector.getConnection(driver, connUrl, database,
                         user, pass);
-
-                //Declare a query
-                String sqlQuery = "SELECT * FROM avengers";
-                PreparedStatement ps = conn.prepareStatement(sqlQuery);
-
-                //Acquire results
-                rs = ps.executeQuery();
-
-                //Loop through results
-                while (rs.next()) {
-                    int id = rs.getInt("id");
-                    String name = rs.getString("avengername");
-                    String description = rs.getString("description");
-                    int powerSourceInt = rs.getInt("powersource");
-
-                    //Create power source object via PowerSourceDb
-                    PowerSource tempPowerSource
-                            = PowerSourceDb.getPowerSource(powerSourceInt);
-
-                    //create Avenger objects based on DB data
-                    Avenger tempAvenger = new Avenger(id, name, description,
-                            tempPowerSource);
-
-                    //add Avenger to ArrayList
-                    avengerList.add(tempAvenger);
-                }
             }
-
+            
+            //Declare a query
+            String sqlQuery = "SELECT * FROM avengers";
+            PreparedStatement ps = conn.prepareStatement(sqlQuery);
+            
+            //Acquire results
+            rs = ps.executeQuery();
+            
+            //Loop through results
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("avengername");
+                String description = rs.getString("description");
+                int powerSourceInt = rs.getInt("powersource");
+                
+                //Create power source object via PowerSourceDb
+                PowerSource tempPowerSource
+                        = PowerSourceDb.getPowerSource(powerSourceInt);
+                
+                //create Avenger objects based on DB data
+                Avenger tempAvenger = new Avenger(id, name, description,
+                        tempPowerSource);
+                
+                //add Avenger to ArrayList
+                avengerList.add(tempAvenger);
+            }
+            
             //Close DB connection
             DBConnector.closeJDBCObjects(conn, rs);
 
