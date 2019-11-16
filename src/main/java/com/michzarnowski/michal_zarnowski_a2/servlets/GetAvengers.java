@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.michzarnowski.michal_zarnowski_a2.servlets;
 
 import com.michzarnowski.michal_zarnowski_a2.model.Avenger;
@@ -16,13 +12,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * HTTP Servlet used to process request when the user wants to see all Avenger
+ * records in the database. 
  * @author Michal Zarnowski
  */
 public class GetAvengers extends HttpServlet {
 
     /**
      * Handles the HTTP <code>GET</code> method.
+     * Method creates an ArrayList holding all Avenger records, saves it as a 
+     * request attribute and dispatches the JSP page used to display all records.
      *
      * @param request servlet request
      * @param response servlet response
