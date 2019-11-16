@@ -1,5 +1,4 @@
 
-
 package com.michzarnowski.michal_zarnowski_a2.taghandlers;
 
 import com.michzarnowski.michal_zarnowski_a2.model.PowerSource;
@@ -10,7 +9,11 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
-
+/**
+ * Custom tag used to display all power sources stored in the database as a 
+ * drop down list inside the addAvenger.jsp
+ * @author Michal Zarnowski
+ */
 public class PowerSourceHandler extends SimpleTagSupport {
     
     @Override
